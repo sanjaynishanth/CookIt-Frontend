@@ -20,16 +20,20 @@ const ContactUs = () => {
         e.preventDefault();
         setLoading(true);
         setResponseMessage("");
-
+    
         try {
-            const response = await fetch("http://localhost:5000/api/contact", {
+            console.log("Sending request to API..."); // Debugging
+            const response = await fetch("https://cookit-backend-4jm5.onrender.com/api/contact", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(formData),
             });
-
+    
+            console.log("Response status:", response.status); // Debugging
+    
             const data = await response.json();
-
+            console.log("Response data:", data); // Debugging
+    
             if (response.ok) {
                 setResponseMessage("Message sent successfully!");
                 setFormData({ name: "", email: "", message: "" });
@@ -37,7 +41,7 @@ const ContactUs = () => {
                 setResponseMessage(data.error || "Something went wrong. Try again.");
             }
         } catch (error) {
-            console.error("Error:", error);
+            console.error("Fetch error:", error);
             setResponseMessage("Error submitting form. Please try again.");
         } finally {
             setLoading(false);

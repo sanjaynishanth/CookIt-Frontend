@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { CardBody, CardContainer, CardItem } from "./ui/3dCard.jsx";
 import ContactImage from "../assets/5124556.gif";
-import { Input, TextArea } from "../components/ui/Input";
+import { Input, TextArea } from "./ui/Input.jsx";
 
 const ContactUs = () => {
     const [formData, setFormData] = useState({ name: "", email: "", message: "" });
